@@ -1,0 +1,37 @@
+type Company @table {
+  name: String!
+  industry: String!
+  location: String
+  foundedDate: Date
+}
+
+type Employee @table {
+  firstName: String!
+  lastName: String!
+  email: String
+  phoneNumber: String
+  position: String
+}
+
+type Project @table {
+  projectName: String!
+  startDate: Date!
+  description: String
+  endDate: Date
+  status: String
+}
+
+type CompanyEmployee @table(key: ["company", "employee"]) {
+  company: Company!
+  employee: Employee!
+  startDate: Date!
+  endDate: Date
+  role: String
+}
+
+type CompanyProject @table(key: ["company", "project"]) {
+  company: Company!
+  project: Project!
+  assignedDate: Date!
+  completionDate: Date
+}

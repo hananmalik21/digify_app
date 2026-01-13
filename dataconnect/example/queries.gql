@@ -1,0 +1,33 @@
+mutation CreateEmployee @auth(level: USER) {
+  employee_insert(data: {
+    firstName: "John",
+    lastName: "Doe",
+    position: "Software Engineer"
+  })
+}
+
+query ListProjects @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  projects {
+    id
+    projectName
+    startDate
+    endDate
+  }
+}
+
+mutation AssignEmployeeToCompany($employeeId: UUID!, $companyId: UUID!, $startDate: Date!) @auth(level: USER) {
+  companyEmployee_insert(data: {
+    employeeId: $employeeId,
+    companyId: $companyId,
+    startDate: $startDate
+  })
+}
+
+query GetCompanyProjects($companyId: UUID!) @auth(level: USER) {
+  company(id: $companyId) {
+    projects_via_CompanyProject {
+      id
+      projectName
+    }
+  }
+}
