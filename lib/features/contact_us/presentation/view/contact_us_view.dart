@@ -359,36 +359,36 @@ class _RightContactFormState extends State<_RightContactForm> {
           children: [
             _LabeledField(
               label: "Name",
-              hint: "John Doe",
+              hint: "Enter your full name",
               controller: _nameController,
               validator: (value) => _validateRequired(value, 'Name'),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 16),
             _LabeledField(
               label: "Email Address",
-              hint: "john@gmail.com",
+              hint: "you@company.com",
               keyboardType: TextInputType.emailAddress,
               controller: _emailController,
               validator: _validateEmail,
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 16),
             _LabeledField(
               label: "Company Name",
-              hint: "Abc",
+              hint: "Your company name",
               controller: _companyController,
               validator: (value) => _validateRequired(value, 'Company Name'),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 16),
             _LabeledField(
               label: "Country",
-              hint: "Abc",
+              hint: "e.g. Pakistan",
               controller: _countryController,
               validator: (value) => _validateRequired(value, 'Country'),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 16),
             _LabeledField(
               label: "Message",
-              hint: "Type...",
+              hint: "Tell us about your project or inquiry...",
               maxLines: 4,
               controller: _messageController,
               validator: (value) => _validateRequired(value, 'Message'),
@@ -465,47 +465,71 @@ class _LabeledField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const borderRadius = BorderRadius.all(Radius.circular(10));
+    const enabledBorder = OutlineInputBorder(
+      borderRadius: borderRadius,
+      borderSide: BorderSide(color: Color(0xFFE5E7EB)),
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
           style: const TextStyle(
-            fontSize: 14,
+            fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF111827),
+            color: Color(0xFF374151),
+            letterSpacing: 0.2,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         TextFormField(
           controller: controller,
           keyboardType: keyboardType,
           maxLines: maxLines,
           validator: validator,
+          cursorColor: const Color(0xFF2563EB),
+          style: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF111827),
+            height: 1.4,
+          ),
+          textAlignVertical:
+              maxLines > 1 ? TextAlignVertical.top : TextAlignVertical.center,
           decoration: InputDecoration(
             hintText: hint,
-            isDense: true,
+            hintStyle: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFF9CA3AF),
+              height: 1.4,
+            ),
             filled: true,
-            fillColor: const Color(0xFFF3F4F6),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 14,
-              vertical: 14,
+            fillColor: const Color(0xFFFAFBFC),
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: maxLines > 1 ? 14 : 16,
             ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(8),
+            border: enabledBorder,
+            enabledBorder: enabledBorder,
+            focusedBorder: const OutlineInputBorder(
+              borderRadius: borderRadius,
+              borderSide: BorderSide(color: Color(0xFF2563EB), width: 1.5),
             ),
-            errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1),
-              borderRadius: BorderRadius.circular(8),
+            errorBorder: const OutlineInputBorder(
+              borderRadius: borderRadius,
+              borderSide: BorderSide(color: Color(0xFFEF4444)),
             ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
-              borderRadius: BorderRadius.circular(8),
+            focusedErrorBorder: const OutlineInputBorder(
+              borderRadius: borderRadius,
+              borderSide: BorderSide(color: Color(0xFFEF4444), width: 1.5),
             ),
             errorStyle: const TextStyle(
               fontSize: 12,
               color: Color(0xFFEF4444),
+              height: 1.2,
             ),
           ),
         ),
