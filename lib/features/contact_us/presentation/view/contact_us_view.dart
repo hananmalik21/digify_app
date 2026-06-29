@@ -106,18 +106,18 @@ class _LeftContactInfo extends StatelessWidget {
         const SizedBox(height: 30),
 
         const _ContactItem(
-          icon: Icons.email_outlined,
-          text: "abc@gmail.com",
+          icon: Icons.location_on_outlined,
+          text: "Shalimar Link Road, Lahore, Pakistan",
         ),
         const SizedBox(height: 16),
         const _ContactItem(
           icon: Icons.phone_outlined,
-          text: "xxxxxxxxxx",
+          text: "+92 301 4979805",
         ),
         const SizedBox(height: 16),
         const _ContactItem(
-          icon: Icons.location_on_outlined,
-          text: "4074 Ebert Summit Suite 375",
+          icon: Icons.language_outlined,
+          text: "https://www.digifyapps.net",
         ),
       ],
     );
