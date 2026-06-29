@@ -116,6 +116,11 @@ class _LeftContactInfo extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const _ContactItem(
+          icon: Icons.email_outlined,
+          text: "Support@digifyapps.net",
+        ),
+        const SizedBox(height: 16),
+        const _ContactItem(
           icon: Icons.language_outlined,
           text: "https://www.digifyapps.net",
         ),
